@@ -7,57 +7,78 @@
 			margin: 0;
 			padding: 0;
 			background-color: #f1f1f1;
+			font-family: Arial, sans-serif;
 		}
 		.calculator {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin-top: 100px;
+			width: 300px;
+			margin: 100px auto;
+			background-color: #444;
+			padding: 20px;
+			box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+			border-radius: 10px;
 		}
-		input[type="text"] {
+		.display {
+			background-color: #fff;
 			padding: 10px;
-			margin: 5px;
-			border: none;
-			border-radius: 5px;
-			width: 200px;
+			height: 60px;
 			text-align: right;
-			font-size: 20px;
+			font-size: 28px;
+			border-radius: 5px;
+			margin-bottom: 20px;
 		}
-		input[type="button"] {
+		.button {
 			padding: 10px;
 			margin: 5px;
 			border: none;
 			border-radius: 5px;
-			background-color: #4CAF50;
-			color: white;
+			background-color: #eee;
+			color: #333;
 			width: 50px;
-			font-size: 20px;
+			height: 50px;
+			font-size: 24px;
 			cursor: pointer;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+			transition: all 0.2s ease-in-out;
 		}
-		input[type="button"]:hover {
+		.button:hover {
+			background-color: #ccc;
+			box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
+		}
+		.button:active {
+			box-shadow: none;
+			transform: translateY(2px);
+		}
+		.button.operator {
+			background-color: #4CAF50;
+			color: #fff;
+		}
+		.button.operator:hover {
 			background-color: #3e8e41;
+		}
+		.button.clear {
+			background-color: #f44336;
+			color: #fff;
+		}
+		.button.clear:hover {
+			background-color: #d32f2f;
 		}
 	</style>
 </head>
 <body>
 	<div class="calculator">
-		<input type="text" id="result" readonly>
-		<input type="button" value="1" onclick="document.getElementById('result').value += '1'">
-		<input type="button" value="2" onclick="document.getElementById('result').value += '2'">
-		<input type="button" value="3" onclick="document.getElementById('result').value += '3'">
-		<input type="button" value="+" onclick="document.getElementById('result').value += '+'">
-		<input type="button" value="4" onclick="document.getElementById('result').value += '4'">
-		<input type="button" value="5" onclick="document.getElementById('result').value += '5'">
-		<input type="button" value="6" onclick="document.getElementById('result').value += '6'">
-		<input type="button" value="-" onclick="document.getElementById('result').value += '-'">
-		<input type="button" value="7" onclick="document.getElementById('result').value += '7'">
-		<input type="button" value="8" onclick="document.getElementById('result').value += '8'">
-		<input type="button" value="9" onclick="document.getElementById('result').value += '9'">
-		<input type="button" value="*" onclick="document.getElementById('result').value += '*'">
-		<input type="button" value="C" onclick="document.getElementById('result').value = ''">
-		<input type="button" value="0" onclick="document.getElementById('result').value += '0'">
-		<input type="button" value="/" onclick="document.getElementById('result').value += '/'">
-		<input type="button" value="=" onclick="document.getElementById('result').value = eval(document.getElementById('result').value)">
-	</div>
-</body>
-</html>
+		<div class="display" id="result"></div>
+		<button class="button operator" onclick="append('+')">+</button>
+		<button class="button operator" onclick="append('-')">-</button>
+		<button class="button operator" onclick="append('*')">&times;</button>
+		<button class="button operator" onclick="append('/')">&divide;</button>
+		<button class="button" onclick="append('7')">7</button>
+		<button class="button" onclick="append('8')">8</button>
+		<button class="button" onclick="append('9')">9</button>
+		<button class="button" onclick="append('4')">4</button>
+		<button class="button" onclick="append('5')">5</button>
+		<button class="button" onclick="append('6')">6</button>
+		<button class="button" onclick="append('1')">1</button>
+		<button class="button" onclick="append('2')">2</button>
+		<button class="button" onclick="append('3')">3</button>
+		<button class="button" onclick="append('0')">0</button>
+		<button
